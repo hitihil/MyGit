@@ -33,7 +33,13 @@ int main()
     {
         cout << "Ваш ход: выберите действие (1 - удар левой рукой, 2 - удар правой рукой, 3 - удар ногой, 4 - блок): ";
         int playerMove;
-        cin >> playerMove;
+
+        while (!(cin >> playerMove))
+        {
+            cout << "Некорректный ввод. Пожалуйста, введите целое число: ";
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
 
         int computerMove = random(1, 4);
 
