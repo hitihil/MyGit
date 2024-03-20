@@ -31,7 +31,7 @@ int main()
 
     while (playerHealth > 0 && computerHealth > 0)
     {
-        cout << "Ваш ход: выберите действие (1 - удар левой рукой, 2 - удар правой рукой, 3 - удар ногой, 4 - блок): ";
+        cout << "Ваш ход: выберите действие (1 - удар левой рукой, 2 - удар правой рукой, 3 - удар ногой, 4 - блок, 0 - принудительно завершить игру): ";
         int playerMove;
 
         while (!(cin >> playerMove))
@@ -46,7 +46,11 @@ int main()
         int hitResult1 = random(2, 12);
         int hitResult2 = random(2, 12);
 
-        switch (playerMove) {
+        switch (playerMove)
+        {
+        case 0:
+            cout << "Игра принудительно завершена." << endl;
+            break;
         case 1:
             cout << "Вы нанесли удар левой рукой!" << endl;
             if (hitResult1 < 5)
@@ -112,6 +116,11 @@ int main()
             break;
         default:
             cout << "Не делай глупостей! Соберись и сражайся!" << endl;
+        }
+
+        if (playerMove == 0)
+        {
+            break;
         }
 
         if (playerMove != 5 && playerMove != 6 && playerMove != 7 && playerMove != 8 && computerHealth > 0)
